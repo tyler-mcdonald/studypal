@@ -14,4 +14,12 @@ def home(request):
 
 
 def room(request, pk):
-    return render(request, 'base/room.html')
+    room = None
+    for i in rooms:
+        if i['id'] == int(pk):
+            room = i
+            break
+
+    context = {'room': room}
+
+    return render(request, 'base/room.html', context)
